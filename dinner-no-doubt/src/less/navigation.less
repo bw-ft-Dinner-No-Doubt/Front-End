@@ -1,0 +1,27 @@
+header{
+    .flex(space-between);
+    align-items: center;
+    padding: 0 1%;
+    color: @font-color;
+    background-color: lightgray;
+
+    .headIcon{
+        font-size: 3rem;
+    }
+
+    .headerNav{
+        width: 25%;
+        .flex(space-between);
+
+        a{
+            .linkReset(@font-color);
+            font-size: 2.2rem;
+        }
+    }
+
+    .logIn{
+        .button(white, @button-bg, 1% 5%);
+        margin: 2% 0%;
+    }
+
+}

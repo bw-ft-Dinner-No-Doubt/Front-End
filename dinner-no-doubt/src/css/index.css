@@ -133,6 +133,65 @@ html {
   font-size: 62.5%;
 }
 .container {
-  width: 100%;
+  border: 1px solid gray;
+  width: 80%;
   margin: 0 auto;
+}
+h1,
+h2 {
+  font-size: 4rem;
+  text-align: center;
+  padding: 2% 0;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1%;
+  color: #223c56;
+  background-color: lightgray;
+}
+header .headIcon {
+  font-size: 3rem;
+}
+header .headerNav {
+  width: 25%;
+  display: flex;
+  justify-content: space-between;
+}
+header .headerNav a {
+  text-decoration: none;
+  color: #223c56;
+  font-size: 2.2rem;
+}
+header .headerNav a:hover {
+  text-decoration: underline;
+}
+header .logIn {
+  color: white;
+  background-color: #0065c6;
+  text-align: center;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  padding: 1% 5%;
+  margin: 2% 0%;
+}
+.spinnerArea {
+  color: #223c56;
+}
+.spinnerArea .spinnerPlaceholder {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+.spinnerArea .restrauntPref {
+  display: flex;
+  justify-content: center;
+  margin-left: 25%;
+  padding: 1% 40%;
+  flex-direction: column;
+  text-align: left;
+  font-size: 1.8rem;
+  margin: 0 auto;
+  border-top: 1px solid gray;
 }
