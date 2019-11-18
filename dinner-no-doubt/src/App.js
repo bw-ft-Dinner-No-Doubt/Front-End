@@ -1,10 +1,11 @@
 import React from 'react';
+import SignInContainer from './components/SignInContainer';
 import './App.css';
 
 function App() {
   return (
     <div>
-     <h1>React-AppSetup</h1>
+     <SignInContainer />
     </div>
   );
 }
