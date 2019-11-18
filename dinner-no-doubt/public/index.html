@@ -42,21 +42,40 @@
       </nav>
       <input type="button" class="logIn" value="Log In">
     </header>
-    <section class="spinnerArea"></section>
-    <!--If there isn't a spinner on desktop remove from here to line #-->
-    <h1>Dinner no Doubt randomizer!</h1>
-    <img src="/dinner-no-doubt/src/images/rouletteSpinnerPlaceholder.png" class="spinnerPlaceholder"
-      alt="A place holder image of a roulette spinner">
-    <h2>Edit your restraunt preferences</h2>
-    <form class="restrauntPref">
-      <input type="checkbox" name="vegan">Vegan
-      <input type="checkbox" name="vegatarian">Vegatarian
-      <input type="checkbox" name="spicy">Spicy
-      <input type="checkbox" name="wheelchair_Accessable">Wheelchair Accessable
-      <input type="checkbox" name="outdoor_Dining">Outdoor Dining
-      <input type="checkbox" name="female_Owned">Female Owned
-      <input type="button" value="Get a random restraunt!">
-    </form>
+    <section class="spinnerArea">
+      <!--If there isn't a spinner on desktop remove from here to line #-->
+      <h1>Dinner no Doubt randomizer!</h1>
+      <img src="/dinner-no-doubt/src/images/rouletteSpinnerPlaceholder.png" class="spinnerPlaceholder"
+        alt="A place holder image of a roulette spinner">
+      <h2>Choose what kind of restraunts you'd like</h2>
+      <form class="restrauntPref">
+        <label class="preference">
+          <input type="checkbox" name="vegan">Vegan
+        </label>
+
+        <label class="preference">
+          <input type="checkbox" name="vegatarian">Vegatarian
+        </label>
+
+        <label class="preference">
+          <input type="checkbox" name="spicy">Spicy
+        </label>
+
+        <label class="preference">
+          <input type="checkbox" name="wheelchair_Accessable">Wheelchair Accessable
+        </label>
+
+          <label class="preference">
+            <input type="checkbox" name="outdoor_Dining">Outdoor Dining
+          </label>
+
+          <label class="preference">
+            <input type="checkbox" name="female_Owned">Female Owned
+          </label>
+
+          <input type="button" class="randomizer" value="Get a random restraunt!">
+      </form>
+    </section>
 
     <summary class="siteDescription">
       <h3>Spin the wheel and let it decide</h3>
