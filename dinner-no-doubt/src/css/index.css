@@ -133,19 +133,22 @@ html {
   font-size: 62.5%;
 }
 .container {
-  border: 1px solid gray;
-  width: 80%;
   margin: 0 auto;
+  width: 100%;
 }
 h1,
-h2 {
+h2,
+h3 {
   font-size: 4rem;
   text-align: center;
   padding: 2% 0;
 }
+h3 {
+  font-size: 2.8rem;
+}
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 0 1%;
   color: #223c56;
@@ -155,7 +158,7 @@ header .headIcon {
   font-size: 3rem;
 }
 header .headerNav {
-  width: 25%;
+  width: 20%;
   display: flex;
   justify-content: space-between;
 }
@@ -176,7 +179,39 @@ header .logIn {
   padding: 1% 5%;
   margin: 2% 0%;
 }
+footer {
+  display: flex;
+  justify-content: space-around;
+  background-color: #3a3a3a;
+  color: white;
+  font-size: 2rem;
+  margin-top: 4%;
+}
+footer .footNavBar {
+  padding: 2%;
+}
+footer .footNavBar .footerNav {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+footer .footNavBar .footerNav a {
+  text-decoration: none;
+  color: #ffc300;
+}
+footer .footNavBar .footerNav a:hover {
+  text-decoration: underline;
+}
+footer .footerSocials {
+  padding: 2%;
+  margin: auto 0;
+  flex-direction: row;
+  align-items: baseline;
+}
 .spinnerArea {
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid gray;
   color: #223c56;
 }
 .spinnerArea .spinnerPlaceholder {
@@ -194,4 +229,11 @@ header .logIn {
   font-size: 1.8rem;
   margin: 0 auto;
   border-top: 1px solid gray ;
+}
+.siteDescription {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
 }
