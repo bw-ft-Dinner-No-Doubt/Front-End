@@ -1,0 +1,28 @@
+footer{
+    .flex(space-around);
+    background-color: @darkblue-gray;
+    color: white;
+    font-size: 2rem;
+    margin-top: 4%;
+
+    .footNavBar{
+        padding: 2%;
+
+
+        .footerNav{
+            .flex();
+            flex-direction: column;
+
+
+            a{
+            .linkReset(@orange-yellow);
+            }
+        }
+    }
+    .footerSocials{
+        padding: 2%;
+        margin: auto 0;
+        flex-direction: row;
+        align-items: baseline;
+    }
+}
