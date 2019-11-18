@@ -1,11 +1,13 @@
 import React from 'react';
-import SignInContainer from './components/SignInContainer';
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
 import './App.css';
 
 function App() {
   return (
     <div>
-     <SignInContainer />
+     <SignIn />
     </div>
   );
 }
