@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Linkk from '@material-ui/core/Link';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
@@ -95,7 +95,7 @@ export default function SignIn() {
             </Grid>
             <Grid item>
               <Linkk href="#" variant="body2">
-                <Link to="/SignUp">Don't have an account? Sign Up</Link>
+                {/* <Link to="/SignUp">Don't have an account? Sign Up</Link> */}
               </Linkk>
             </Grid>
           </Grid>

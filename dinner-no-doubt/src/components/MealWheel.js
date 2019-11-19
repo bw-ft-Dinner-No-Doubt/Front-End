@@ -1,22 +1,27 @@
 import React from 'react';
 import Slot from 'react-slot-machine';
+import RestaurantList from './RestaurantList'
 
-import list from './my-list';
 
-const MealWheel = props => {
-  <div>
+// import list from './my-list';
+
+const MealWheel = (props) => {
+console.log('MealWheel.js -> %cprops:', 'color: cyan', props)
+ 
+ return (
+ <div>
     <Slot >
       {
-        list.map(value =>
+        props.restaurants.map(restaurant =>
           <div className = 'slot-style'>
-            {value}
-          </div>
-        )
+            <h3>{restaurant.name}</h3>
+        </div>
           // Children of `Slot` be sure to be `width` and `height` are 100%.
-      }
+        
+        )}
     </Slot>
   </div>
-}
+)}
   
 export default MealWheel
 
