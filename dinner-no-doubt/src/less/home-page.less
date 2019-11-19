@@ -1,30 +1,123 @@
-.spinnerArea{
-    width: 80%;
-    margin: 0 auto;
-    border: 1px solid gray;
-    color: @font-color;
+.siteDescription {
+    display  : flex;
+    flex-wrap: wrap;
+    color    : @font-color;
+    width    : 60%;
+    .flex();
+    flex-direction: row;
+    margin        : 1% auto;
 
-    .spinnerPlaceholder{
-        display: flex;
-        margin-left: auto;
-        margin-right: auto;
+    @media @mobile {
+        width: 90%;
     }
 
-    .restrauntPref{
-        .flex();
-        width: 50%;
-        padding: 1% 2%;
-        flex-direction: column;
+    @media @tablet{
+        width: 90%;
+    }
+
+    .aboutContent {
+        width     : 30%;
         text-align: left;
-        font-size: 1.8rem;
-        margin: 0 auto;
-        border-top: 1px solid gray ;
+        margin    : 0 1%;
+
+        @media @mobile {
+            width         : 100%;
+            flex-direction: column;
+        }
+
+        @media @tablet{
+            width: 100%;
+            margin-bottom: 2%;
+            flex-direction: column;
+        }
+    }
+
+    p {
+        font-size    : 1.8rem;
+        margin-bottom: 2%;
+    }
+
+    .appDownload {
+        .button(white, darkorange, 2% 5%);
+        display   : block;
+        margin-top: 2%;
+
+        @media @mobile {
+            width: 100%;
+        }
+
+        &:hover {
+            animation-name    : hover;
+            animation-duration: 1s;
+        }
     }
 }
 
-.siteDescription{
-    width: 60%;
-    .flex();
-    flex-direction: column;
-    margin: 0 auto;
+.spinnerArea {
+    width     : 80%;
+    margin    : 0 auto;
+    color     : @font-color;
+    border-top: 1px solid gray;
+
+    .spinnerPlaceholder {
+        display     : flex;
+        margin-left : auto;
+        margin-right: auto;
+        margin-bottom: 2%; 
+        
+        @media @mobile {
+            width: 90%;
+        }
+    }
+
+
+    .restrauntPref {
+        .flex();
+        flex-wrap : wrap;
+        width     : 60%;
+        padding   : 1% 2%;
+        text-align: left;
+        font-size : 1.8rem;
+        margin    : 0 auto;
+        border-top: 1px solid gray;
+
+        @media @mobile{
+            display: inline-block;
+            flex-wrap: nowrap;
+            width: 100%;
+        }
+
+        .preference1 {
+            width: 49%;
+
+            @media @mobile{
+                display: block;
+            }
+        }
+
+        .preference2 {
+            width     : 51%;
+            text-align: right;
+            
+            @media @mobile{
+                display: block;
+                margin-left: 50%;
+            }
+        }
+
+        .randomizer {
+            width: 100%;
+            .button(white, @button-bg, 2% 5%);
+            display   : block;
+            margin-top: 2%;
+
+            @media @mobile{
+                display: block;
+            }
+
+            &:hover {
+                background-color: cornflowerblue;
+            }
+        }
+    }
 }

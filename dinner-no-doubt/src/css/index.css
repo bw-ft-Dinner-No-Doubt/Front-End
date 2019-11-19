@@ -1,3 +1,11 @@
+@keyframes hover {
+  from {
+    background-color: darkorange;
+  }
+  to {
+    background-color: red;
+  }
+}
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -135,6 +143,7 @@ html {
 .container {
   margin: 0 auto;
   width: 100%;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 h1,
 h2,
@@ -142,29 +151,52 @@ h3 {
   font-size: 4rem;
   text-align: center;
   padding: 2% 0;
+  font-weight: bold;
+}
+h2 {
+  font-size: 3rem;
 }
 h3 {
   font-size: 2.8rem;
+}
+h4 {
+  font-size: 2.2rem;
+  font-weight: bold;
 }
 header {
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 0 1%;
-  color: #223c56;
-  background-color: lightgray;
+  color: #ffc300;
+  background-color: #3a3a3a;
 }
 header .headIcon {
   font-size: 3rem;
+}
+@media (max-width: 500px) {
+  header .headIcon {
+    display: none;
+  }
 }
 header .headerNav {
   width: 20%;
   display: flex;
   justify-content: space-between;
 }
+@media (max-width: 500px) {
+  header .headerNav {
+    width: 60%;
+  }
+}
+@media (max-width:780px) {
+  header .headerNav {
+    width: 35%;
+  }
+}
 header .headerNav a {
   text-decoration: none;
-  color: #223c56;
+  color: white;
   font-size: 2.2rem;
 }
 header .headerNav a:hover {
@@ -177,7 +209,11 @@ header .logIn {
   font-size: 1.5rem;
   border-radius: 10px;
   padding: 1% 5%;
-  margin: 2% 0%;
+  border: 1px solid #3a3a3a;
+  margin: 1% 0%;
+}
+header .logIn:hover {
+  background-color: cornflowerblue;
 }
 footer {
   display: flex;
@@ -208,32 +244,135 @@ footer .footerSocials {
   flex-direction: row;
   align-items: baseline;
 }
+.siteDescription {
+  flex-wrap: wrap;
+  color: #223c56;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin: 1% auto;
+}
+@media (max-width: 500px) {
+  .siteDescription {
+    width: 90%;
+  }
+}
+@media (max-width:780px) {
+  .siteDescription {
+    width: 90%;
+  }
+}
+.siteDescription .aboutContent {
+  width: 30%;
+  text-align: left;
+  margin: 0 1%;
+}
+@media (max-width: 500px) {
+  .siteDescription .aboutContent {
+    width: 100%;
+    flex-direction: column;
+  }
+}
+@media (max-width:780px) {
+  .siteDescription .aboutContent {
+    width: 100%;
+    margin-bottom: 2%;
+    flex-direction: column;
+  }
+}
+.siteDescription p {
+  font-size: 1.8rem;
+  margin-bottom: 2%;
+}
+.siteDescription .appDownload {
+  color: white;
+  background-color: darkorange;
+  text-align: center;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  padding: 2% 5%;
+  display: block;
+  margin-top: 2%;
+}
+@media (max-width: 500px) {
+  .siteDescription .appDownload {
+    width: 100%;
+  }
+}
+.siteDescription .appDownload:hover {
+  animation-name: hover;
+  animation-duration: 1s;
+}
 .spinnerArea {
   width: 80%;
   margin: 0 auto;
-  border: 1px solid gray;
   color: #223c56;
+  border-top: 1px solid gray;
 }
 .spinnerArea .spinnerPlaceholder {
   display: flex;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 2%;
+}
+@media (max-width: 500px) {
+  .spinnerArea .spinnerPlaceholder {
+    width: 90%;
+  }
 }
 .spinnerArea .restrauntPref {
   display: flex;
   justify-content: center;
-  width: 50%;
+  flex-wrap: wrap;
+  width: 60%;
   padding: 1% 2%;
-  flex-direction: column;
   text-align: left;
   font-size: 1.8rem;
   margin: 0 auto;
-  border-top: 1px solid gray ;
+  border-top: 1px solid gray;
 }
-.siteDescription {
-  width: 60%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  margin: 0 auto;
+@media (max-width: 500px) {
+  .spinnerArea .restrauntPref {
+    display: inline-block;
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+}
+.spinnerArea .restrauntPref .preference1 {
+  width: 49%;
+}
+@media (max-width: 500px) {
+  .spinnerArea .restrauntPref .preference1 {
+    display: block;
+  }
+}
+.spinnerArea .restrauntPref .preference2 {
+  width: 51%;
+  text-align: right;
+}
+@media (max-width: 500px) {
+  .spinnerArea .restrauntPref .preference2 {
+    display: block;
+    margin-left: 50%;
+  }
+}
+.spinnerArea .restrauntPref .randomizer {
+  width: 100%;
+  color: white;
+  background-color: #0065c6;
+  text-align: center;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  padding: 2% 5%;
+  display: block;
+  margin-top: 2%;
+}
+@media (max-width: 500px) {
+  .spinnerArea .restrauntPref .randomizer {
+    display: block;
+  }
+}
+.spinnerArea .restrauntPref .randomizer:hover {
+  background-color: cornflowerblue;
 }

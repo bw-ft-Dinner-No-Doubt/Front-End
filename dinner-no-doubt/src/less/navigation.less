@@ -2,26 +2,43 @@ header{
     .flex(space-around);
     align-items: center;
     padding: 0 1%;
-    color: @font-color;
-    background-color: lightgray;
+    color: @orange-yellow;
+    background-color: @darkblue-gray;
 
     .headIcon{
         font-size: 3rem;
+
+        @media @mobile{
+            display: none;
+        }
     }
 
     .headerNav{
         width: 20%;
         .flex(space-between);
 
+        @media @mobile{
+            width: 60%;
+        }
+
+        @media @tablet{
+            width: 35%;
+        }
+
         a{
-            .linkReset(@font-color);
+            .linkReset(white);
             font-size: 2.2rem;
         }
     }
 
     .logIn{
         .button(white, @button-bg, 1% 5%);
-        margin: 2% 0%;
+        border: 1px solid @darkblue-gray;
+        margin: 1% 0%;
+
+        &:hover{
+            background-color: cornflowerblue;
+        }
     }
 
 }
