@@ -7,10 +7,11 @@ const RestaurantChoice = props => {
     props.restaurantChoice
   );
   const rcInfo = {
-    id: props.restaurantChoice.id,
+    //user_id  
+  
     name: props.restaurantChoice.name,
     category: props.restaurantChoice.category[0].alias,
-    dateVisited: Date(now)
+    recentHistory: 1
   };
   AxiosWithAuth()
     .POST("/api/restaurants", rcInfo)

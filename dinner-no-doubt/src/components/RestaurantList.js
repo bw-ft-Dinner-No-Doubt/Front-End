@@ -7,6 +7,25 @@ const RestaurantList = () => {
   const user = {
     zip: 73099
   };
+  const foodPrefs = {
+    spicy: 1,
+    vegetarian: 0,
+    vegan: 0,
+    femaleOwned: 0,
+    outdoor_dining: 1
+  };
+
+  console.log("FoodPrefs:", foodPrefs);
+
+  let terms = Object.entries(foodPrefs).forEach(pref => {
+    if(pref[1] !== 0){
+        return pref[0]
+    }
+  })
+console.log('Terms:',terms)
+// console.log('RestaurantList.js -> %csearchTerms:', 'color: red', searchTerms)
+
+  console.log("RestaurantList.js -> %cterms:", "color: brown", terms);
 
   useEffect(() => {
     AxiosWithAuthYelp()
