@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { AxiosWithAuthYelp } from "./utilities/AxiosWithAuth-Yelp";
-import MealWheel from "./MealWheel";
+import React, { useEffect } from "react";
+import {connect} from "react-redux";
 
-const RestaurantList = () => {
-  const [restaurants, setRestaurants] = useState("");
+import {fetchRestaurants} from "./actions/index";
+import Slot from "react-slot-machine";
+
+const RestaurantList = (props) => {
+  console.log("RestaurantList.js -> %cprops:", "color: cyan", props);
+
   const user = {
     zip: 73099
   };
@@ -15,40 +18,52 @@ const RestaurantList = () => {
     outdoor_dining: 1
   };
 
+  const target =Math.round(Math.random()*10)
+  console.log('RestaurantList.js -> %ctarget:', 'color: teal', target)
+
   console.log("FoodPrefs:", foodPrefs);
 
   let terms = Object.entries(foodPrefs).forEach(pref => {
-    if(pref[1] !== 0){
-        return pref[0]
+    if (pref[1] !== 0) {
+      return pref[0];
     }
-  })
-console.log('Terms:',terms)
-// console.log('RestaurantList.js -> %csearchTerms:', 'color: red', searchTerms)
+  });
+  console.log("Terms:", terms);
+  // console.log('RestaurantList.js -> %csearchTerms:', 'color: red', searchTerms)
 
   console.log("RestaurantList.js -> %cterms:", "color: brown", terms);
 
   useEffect(() => {
-    AxiosWithAuthYelp()
-      .get(`/search?term="restaurant"&location=${user.zip}&limit=5`)
-      // .then(console.log("Results:", res))
-      .then(res => {
-        setRestaurants(res.data.businesses);
-      })
-
-      .catch(err =>
-        console.error(
-          "Something's bad in actionsYelp. Here's the error: ",
-          err.response
-        )
-      );
+    props.fetchRestaurants();
   }, []);
+  if (props.isFetching) {
+    return <h2>Loading Restaurants...</h2>;
+  }
 
   return (
-    <div>
-      {console.log("Restaurants:", restaurants)}
-
-      {/* <MealWheel restaurants = {[restaurants]}/> */}
-    </div>
+    <section>
+      {props.error && <p>{props.error}</p>}
+      <div>
+        <Slot target= {target}  >
+          {props.restaurantList.map(
+            restaurant  => (
+              <div className="slot-style">
+                {restaurant.name}
+              </div>
+            )
+            // Children of `Slot` be sure to be `width` and `height` are 100%.
+          )}
+        </Slot>
+      </div>
+    </section>
   );
 };
-export default RestaurantList;
+const mapStatetoProps = state => {
+  return {
+    restaurantList: state.restaurantList,
+    isFetching: state.isFetching,
+    error: state.error
+  };
+};
+
+export default connect(mapStatetoProps, { fetchRestaurants })(RestaurantList);
