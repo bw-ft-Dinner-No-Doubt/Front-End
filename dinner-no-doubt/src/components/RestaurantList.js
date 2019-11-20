@@ -1,15 +1,12 @@
 import React, { useEffect } from "react";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
-import {fetchRestaurants} from "./actions/index";
+import { fetchRestaurants } from "./actions/index";
 import Slot from "react-slot-machine";
 
-const RestaurantList = (props) => {
+const RestaurantList = props => {
   console.log("RestaurantList.js -> %cprops:", "color: cyan", props);
 
-  const user = {
-    zip: 73099
-  };
   const foodPrefs = {
     spicy: 1,
     vegetarian: 0,
@@ -18,8 +15,14 @@ const RestaurantList = (props) => {
     outdoor_dining: 1
   };
 
-  const target =Math.round(Math.random()*10)
-  console.log('RestaurantList.js -> %ctarget:', 'color: teal', target)
+  const wheelData = {
+    target: Math.round(Math.random() * 10),
+    times: 2,
+    duration: 3000,
+    turn: false
+  };
+
+  // console.log('RestaurantList.js -> %ctarget:', 'color: teal', target)
 
   console.log("FoodPrefs:", foodPrefs);
 
@@ -44,12 +47,14 @@ const RestaurantList = (props) => {
     <section>
       {props.error && <p>{props.error}</p>}
       <div>
-        <Slot target= {target}  >
+        <Slot
+          target={wheelData.target}
+          times={wheelData.times}
+          duration={wheelData.duration}
+        >
           {props.restaurantList.map(
-            restaurant  => (
-              <div className="slot-style">
-                {restaurant.name}
-              </div>
+            restaurant => (
+              <div className="slot-style">{restaurant.name}</div>
             )
             // Children of `Slot` be sure to be `width` and `height` are 100%.
           )}

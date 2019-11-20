@@ -7,8 +7,8 @@ const RestaurantChoice = props => {
     props.restaurantChoice
   );
   const rcInfo = {
-    //user_id  
-  
+    //user_id
+
     name: props.restaurantChoice.name,
     category: props.restaurantChoice.category[0].alias,
     recentHistory: 1

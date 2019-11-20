@@ -28,8 +28,10 @@ export const fetchRestaurants = () => dispatch => {
     zip: 73099
   };
   AxiosWithAuthYelp()
-    .get(`/search?term="restaurant"&location=73099&limit=10`)
-    .then(res => dispatch({ type: FETCH_SUCCESS_YELP, payload: res.data.businesses }))
+    .get(`/search?term="restaurant"&location=${user.zip}&limit=10`)
+    .then(res =>
+      dispatch({ type: FETCH_SUCCESS_YELP, payload: res.data.businesses })
+    )
     .catch(err =>
       dispatch({ type: FETCH_FAILURE_YELP, payload: err.response })
     );
