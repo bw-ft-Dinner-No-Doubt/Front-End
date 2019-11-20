@@ -6,11 +6,14 @@ import MealWheel from './MealWheel';
 const RestaurantList = () => {
 
         const [restaurants, setRestaurants] = useState("")
+        const user ={
+            zip: 73099        
+        }
 
 
     useEffect(() => {
     AxiosWithAuthYelp()
-    .get(`/search?term="restaurant"&location=73099&limit=5`)
+    .get(`/search?term="restaurant"&location=${user.zip}&limit=5`)
     // .then(console.log("Results:", res))
     .then(res => {
         setRestaurants(res.data.businesses)

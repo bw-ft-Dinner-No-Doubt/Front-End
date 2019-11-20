@@ -1,16 +1,16 @@
 import React from 'react';
 
 import React from 'react';
-import PropTypes from 'prop-types';
+
 
 
 const RestaurantChoice = (props) => {
 
-    const[restaurantChoice, setRestaurantChoice] = useState(props.restaurant)
+    const[restaurantChoice, setRestaurantChoice] = useState(props.restaurantChoice)
     const rcInfo= {
-        id:props.restaurant.id,
-        name: props.restaurant.name,
-        category: props.restaurant.category[0].alias,
+        id:props.restaurantChoice.id,
+        name: props.restaurantChoice.name,
+        category: props.restaurantChoice.category[0].alias,
         dateVisited: Date(now)
 
     }

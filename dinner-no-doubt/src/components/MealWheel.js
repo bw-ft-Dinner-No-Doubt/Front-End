@@ -25,7 +25,7 @@ console.log('MealWheel.js -> %cprops:', 'color: cyan', props)
   
 export default MealWheel
 
-
+//PROPS: restaurant chosen as restaurantChoice
 
 // npm i --save react-slot-machine
 // # or
