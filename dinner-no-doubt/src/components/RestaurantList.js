@@ -63,7 +63,8 @@ const RestaurantList = props => {
             // Children of `Slot` be sure to be `width` and `height` are 100%.
           )}
         </Slot>
-        {/* <RestaurantChoice /> */}
+        {/* <RestaurantChoice {...props}/> */}
+        {console.log('RestaurantList.js -> %cprops:', 'color: green', props)}
       </div>
     </section>
   );
