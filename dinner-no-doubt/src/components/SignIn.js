@@ -65,6 +65,7 @@ const FormikOnboardingForm = withFormik({
       .catch(error => {
         console.log(error);
       });
+      
   }
 })(OnboardingForm);
 
