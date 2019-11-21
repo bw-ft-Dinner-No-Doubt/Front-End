@@ -35,7 +35,7 @@ const OnboardingForm = ({ values, errors, touched, status, setFieldValue }) => {
              <option value="femaleOwned">Female Owned</option>
             </Field>
 
-            <Field className="options" name="platformPref" as="select">
+            <Field className="option" name="platformPref" as="select">
              <option value="doorDash">Door Dash</option>
              <option value="uberEats">Uber Eats</option>
              <option value="grubHub">Grub Hub</option>
