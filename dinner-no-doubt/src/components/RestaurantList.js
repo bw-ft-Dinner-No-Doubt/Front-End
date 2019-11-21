@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-
+import RestaurantChoice from "./RestaurantChoice";
 import { fetchRestaurants } from "./actions/index";
 import Slot from "react-slot-machine";
 
 const RestaurantList = props => {
   console.log("RestaurantList.js -> %cprops:", "color: cyan", props);
 
+  const divStyle={width: '100%', height: '100%'}
   const foodPrefs = {
     spicy: 1,
     vegetarian: 0,
@@ -21,6 +22,8 @@ const RestaurantList = props => {
     duration: 3000,
     turn: false
   };
+
+  
 
   // console.log('RestaurantList.js -> %ctarget:', 'color: teal', target)
 
@@ -46,6 +49,7 @@ const RestaurantList = props => {
   return (
     <section>
       {props.error && <p>{props.error}</p>}
+
       <div>
         <Slot
           target={wheelData.target}
@@ -53,12 +57,13 @@ const RestaurantList = props => {
           duration={wheelData.duration}
         >
           {props.restaurantList.map(
-            restaurant => (
-              <div className="slot-style">{restaurant.name}</div>
+            (restaurant = restaurant, key = restaurant.id) => (
+              <div style = {divStyle}>{restaurant.name}</div>
             )
             // Children of `Slot` be sure to be `width` and `height` are 100%.
           )}
         </Slot>
+        {/* <RestaurantChoice /> */}
       </div>
     </section>
   );

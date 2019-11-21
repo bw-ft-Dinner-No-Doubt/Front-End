@@ -1,22 +1,23 @@
 import React from "react";
 import { AxiosWithAuthYelp } from "../utilities/AxiosWithAuthYelp";
 import { AxiosWithAuth } from "../utilities/AxiosWithAuth";
+import RestaurantChoice from "../RestaurantChoice";
 
 export const START_FETCHING_YELP = "START_FETCHING_YELP";
 export const FETCH_SUCCESS_YELP = "FETCH_SUCCESS_YELP";
 export const FETCH_FAILURE_YELP = "FETCH_FAILURE_YELP";
 
-export const START_FETCHING = "START_FETCHING";
-export const FETCH_SUCCESS = "FETCH_SUCCESS";
-export const FETCH_FAILURE = "FETCH_FAILURE";
+export const START_FETCHING_HISTORY = "START_FETCHING_HISTORY";
+export const FETCH_SUCCESS_HISTORY = "FETCH_SUCCESS_HISTORY";
+export const FETCH_FAILURE_HISTORY = "FETCH_FAILURE_HISTORY";
 
-export const START_POSTING = "START_POSTING";
-export const POST_SUCCESS = "POST_SUCCESS";
-export const POST_FAILURE = "POST_FAILURE";
+export const START_POSTING_HISTORY = "START_POSTING_HISTORY";
+export const POST_SUCCESS_HISTORY = "POST_SUCCESS_HISTORY";
+export const POST_FAILURE_HISTORY = "POST_FAILURE_HISTORY";
 
-export const START_PUT = "START_POSTING";
-export const PUT_SUCCESS = "POST_SUCCESS";
-export const PUT_FAILURE = "POST_FAILURE";
+export const START_PUT = "START_PUT";
+export const PUT_SUCCESS = "PUT_SUCCESS";
+export const PUT_FAILURE = "PUT_FAILURE";
 
 export const START_DELETE = "START_DELETE";
 export const DELETE_SUCCESS = "DELETE_SUCCESS";
@@ -37,11 +38,27 @@ export const fetchRestaurants = () => dispatch => {
     );
 };
 
-export const postSmurfs = smurf => dispatch => {
-  dispatch({ type: START_POSTING });
-  AxiosWithAuth.post(`http://localhost:3333/smurfs`, smurf)
-    .then(res => dispatch({ type: POST_SUCCESS }))
-    .catch(err => dispatch({ type: FETCH_FAILURE, payload: err.response }));
+export const fetchHistory = () => dispatch => {
+  dispatch({ type: START_FETCHING_HISTORY });
+  const user = {
+    zip: 73099
+  };
+  AxiosWithAuth()
+    .get(`/api/restaurant`)
+    .then(res => dispatch({ type: FETCH_SUCCESS_HISTORY, payload: res.data }))
+    .catch(err =>
+      dispatch({ type: FETCH_FAILURE_HISTORY, payload: err.response })
+    );
+};
+
+export const postHistory = props => dispatch => {
+console.log('index.js -> %cprops:', 'color: purple', props)
+  dispatch({ type: START_POSTING_HISTORY });
+  AxiosWithAuth.post(`/api/restaurant`, props.restaurantChoice)
+    .then(res => dispatch({ type: POST_SUCCESS_HISTORY }))
+    .catch(err =>
+      dispatch({ type: FETCH_FAILURE_HISTORY, payload: err.response })
+    );
 };
 
 export const putSmurfs = (id, smurf) => dispatch => {

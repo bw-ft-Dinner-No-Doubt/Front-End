@@ -4,9 +4,13 @@ import {
     FETCH_SUCCESS_YELP,
     FETCH_FAILURE_YELP,
     
-    START_POSTING,
-    POST_SUCCESS,
-    POST_FAILURE,
+    START_FETCHING_HISTORY,
+    FETCH_SUCCESS_HISTORY,
+    FETCH_FAILURE_HISTORY,
+
+    START_POSTING_HISTORY,
+    POST_SUCCESS_HISTORY,
+    POST_FAILURE_HISTORY,
     
     START_PUT,
     PUT_SUCCESS,
@@ -26,6 +30,9 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+
+
+    /////////// Fetching Yelp Data ////////////////   
         case START_FETCHING_YELP:
             return {
                 ...state,
@@ -47,22 +54,49 @@ const reducer = (state = initialState, action) => {
                 isFetching: false
             };
 
-        case START_POSTING:
+
+    /////////// Fetching restaurant history///////////////        
+            case START_FETCHING_HISTORY:
+                return {
+                    ...state,
+                    isFetching: true,
+                    error: ""
+                };
+            case FETCH_SUCCESS_HISTORY:
+                return {
+                    ...state,
+                    isFetching: false,
+                    error: "",
+                    restaurantList: action.payload
+                };
+    
+            case FETCH_FAILURE_HISTORY:
+                return {
+                    ...state,
+                    error: action.payload,
+                    isFetching: false
+                };
+
+
+    /////////// Posting restaurant history///////////////            
+        case START_POSTING_HISTORY:
             return {
                 ...state,
                 isPosting: true,
                 error: ""
             };
-        case POST_SUCCESS:
+        case POST_SUCCESS_HISTORY:
             return {
                 ...state,
                 isPosting: false
             };
-        case POST_FAILURE:
+        case POST_FAILURE_HISTORY:
             return {
                 ...state,
                 error: action.payload
             };
+
+    ///////////User Reducers///////////////////        
 
         case START_PUT:
             return {
