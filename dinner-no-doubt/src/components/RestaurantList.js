@@ -1,42 +1,79 @@
-import React, {useEffect, useState} from 'react';
-import {AxiosWithAuthYelp} from './utilities/AxiosWithAuth-Yelp';
-import MealWheel from './MealWheel';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import RestaurantChoice from "./RestaurantChoice";
+import { fetchRestaurants } from "./actions/index";
+import Slot from "react-slot-machine";
 
+const RestaurantList = props => {
+  console.log("RestaurantList.js -> %cprops:", "color: cyan", props);
 
-const RestaurantList = () => {
+  const divStyle={width: '100%', height: '100%'}
+  const foodPrefs = {
+    spicy: 1,
+    vegetarian: 0,
+    vegan: 0,
+    femaleOwned: 0,
+    outdoor_dining: 1
+  };
 
-        const [restaurants, setRestaurants] = useState("")
-        const user ={
-            zip: 73099        
-        }
+  const wheelData = {
+    target: Math.round(Math.random() * 10),
+    times: 2,
+    duration: 3000,
+    turn: false
+  };
 
+  
 
-    useEffect(() => {
-    AxiosWithAuthYelp()
-    .get(`/search?term="restaurant"&location=${user.zip}&limit=5`)
-    // .then(console.log("Results:", res))
-    .then(res => {
-        setRestaurants(res.data.businesses)
-     })
-   
-    .catch(err => console.error("Something's bad in actionsYelp. Here's the error: ", err.response));
-	
-}, []);
+  // console.log('RestaurantList.js -> %ctarget:', 'color: teal', target)
 
-return (
+  console.log("FoodPrefs:", foodPrefs);
 
-    <div>
-        {console.log("Restaurants:",restaurants)}
-    
-           
-                {/* <MealWheel restaurants = {[restaurants]}/> */}
-               
-            
+  let terms = Object.entries(foodPrefs).forEach(pref => {
+    if (pref[1] !== 0) {
+      return pref[0];
+    }
+  });
+  console.log("Terms:", terms);
+  // console.log('RestaurantList.js -> %csearchTerms:', 'color: red', searchTerms)
 
-    </div>
-)
+  console.log("RestaurantList.js -> %cterms:", "color: brown", terms);
 
+  useEffect(() => {
+    props.fetchRestaurants();
+  }, []);
+  if (props.isFetching) {
+    return <h2>Loading Restaurants...</h2>;
+  }
 
+  return (
+    <section>
+      {props.error && <p>{props.error}</p>}
 
-}
-export default RestaurantList
+      <div>
+        <Slot
+          target={wheelData.target}
+          times={wheelData.times}
+          duration={wheelData.duration}
+        >
+          {props.restaurantList.map(
+            (restaurant = restaurant, key = restaurant.id) => (
+              <div style = {divStyle}>{restaurant.name}</div>
+            )
+            // Children of `Slot` be sure to be `width` and `height` are 100%.
+          )}
+        </Slot>
+        {/* <RestaurantChoice /> */}
+      </div>
+    </section>
+  );
+};
+const mapStatetoProps = state => {
+  return {
+    restaurantList: state.restaurantList,
+    isFetching: state.isFetching,
+    error: state.error
+  };
+};
+
+export default connect(mapStatetoProps, { fetchRestaurants })(RestaurantList);

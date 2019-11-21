@@ -1,40 +1,42 @@
-import React from 'react';
-
-import React from 'react';
+import React, {useState} from "react";
+import {AxiosWithAuth} from './utilities/AxiosWithAuth';
+import RestaurantList from './RestaurantList';
 
 
 
 const RestaurantChoice = (props) => {
+console.log('RestaurantChoice.js -> %cprops:', 'color: darkorange', props)
+  
 
-    const[restaurantChoice, setRestaurantChoice] = useState(props.restaurantChoice)
-    const rcInfo= {
-        id:props.restaurantChoice.id,
-        name: props.restaurantChoice.name,
-        category: props.restaurantChoice.category[0].alias,
-        dateVisited: Date(now)
 
-    }
-    AxiosWithAuth()
-    .POST('/api/restaurants', rcInfo)
+  
+  const rcInfo = {
+    //user_id
+
+    name: props.restaurantList.name,
+    category: props.restaurantList.categories[0].title,
+    recentHistory: 1
+  };
+  AxiosWithAuth()
+    .post("/api/restaurants", rcInfo)
     .then(res => {
-        console.log(res);
-        setSubmitting(false);
+      console.log(res);
+      
     })
     .catch(err => {
-        console.error('Problem in RestaurantChoicePOST:',err); // There was an error creating the data and logs to console
-        setSubmitting(false);
+      console.error("Problem in RestaurantChoicePOST:", err); // There was an error creating the data and logs to console
+      
     });
 
-    return (
-        <div>
-            <h3>{props.restaurant.name}</h3>
-            <p>{props.restaurant.display_phone}</p>
-            <p>{props.restaurant.categories[0].alias}</p>
-            <p>{props.restaurant.price}</p>
-            <p>`{props.restaurant.rating} out of 5 stars`</p>
-            
-        </div>
-    );
+  return (
+    <div>
+      <h3>{props.restaurant.name}</h3>
+      <p>{props.restaurant.display_phone}</p>
+      <p>{props.restaurant.categories[0].title}</p>
+      <p>{props.restaurant.price}</p>
+      <p>`{props.restaurant.rating} out of 5 stars`</p>
+    </div>
+  );
 };
 
 export default RestaurantChoice;
