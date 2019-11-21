@@ -3,7 +3,7 @@ import { Menu } from "semantic-ui-react";
 import { NavLink, Route } from "react-router-dom";
 import RecentHistory from "./RecentHistory";
 import MyProfile from "./MyProfile";
-
+import RestaurantList from '../components/RestaurantList';
 export default function Dashboard() {
    const [activeItem, setActiveItem] = useState('');
    const handleItemClick = (e, { name }) => {
@@ -13,6 +13,7 @@ export default function Dashboard() {
    return (
       <>
          <Menu tabular>
+         <RestaurantList/>
             <Menu.Item
                name='RecentHistory'
                active={activeItem === 'RecentHistory'}

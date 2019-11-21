@@ -4,7 +4,7 @@ import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 // import Dashboard from './components/Dashboard';
 // import MealWheel from './components/MealWheel';
-// import RestaurantList from './components/RestaurantList';
+import RestaurantList from './components/RestaurantList';
 import './App.css';
 
 function App() {
@@ -17,15 +17,7 @@ function App() {
         </Switch> 
 
         {/* <Dashboard /> */}
-     
-      
-     
-
-
-
-
-
-     {/* <RestaurantList/> */}
+  <RestaurantList/>
      {/* <MealWheel/> */}
    
     </div>

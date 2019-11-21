@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import RestaurantChoice from "./RestaurantChoice";
-import { fetchRestaurants } from "./actions/index";
+import {fetchRestaurants } from "./actions/";
 import Slot from "react-slot-machine";
 
 const RestaurantList = props => {
@@ -56,8 +56,7 @@ const RestaurantList = props => {
           times={wheelData.times}
           duration={wheelData.duration}
         >
-          {props.restaurantList.map(
-            (restaurant = restaurant, key = restaurant.id) => (
+          {props.restaurantList.map((restaurant, id) => (
               <div style = {divStyle}>{restaurant.name}</div>
             )
             // Children of `Slot` be sure to be `width` and `height` are 100%.
