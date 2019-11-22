@@ -66,7 +66,7 @@ const FormikOnboardingForm = withFormik({
   handleSubmit(values, { setStatus, resetForm }) {
   console.log('SignIn.js -> %cvalues:', 'color: indigo', values)
    AxiosWithAuth()
-      .post("api/auth/login", values)
+      .post(`api/auth/login`, values)
       .then(res => {
          console.log(res)
          localStorage.setItem('token', res.data.token);

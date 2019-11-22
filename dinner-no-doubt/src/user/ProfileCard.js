@@ -1,4 +1,5 @@
 import React from 'react';
+import FoodPrefForm from './FoodPrefForm';
 
 const ProfileCard = props => {
 console.log('ProfileCard.js -> %cprops:', 'color: deeppink', props)
@@ -14,6 +15,8 @@ console.log('ProfileCard.js -> %cprops:', 'color: deeppink', props)
             <h4>{props.profile.platformPref}</h4>
             <button className='edit-btn' onClick={() => props.setUserProfile()}>Edit</button>
             {/* <button className='edit-btn' onClick={() => props.setUserProfile()}>Edit</button> */}
+        <FoodPrefForm/>
+
         </div>
     )
 };

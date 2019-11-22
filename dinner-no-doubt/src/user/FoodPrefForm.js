@@ -27,14 +27,14 @@ const OnboardingForm = ({ values, errors, touched, status, setFieldValue }) => {
              {touched.zipcode && errors.zipcode && <p className="error">{errors.zipcode}</p>}
              <Field type="integer" name="zipcode" placeholder="Zip Code" /> */}
 
-             <Field className="options" name="foodPref" as="select">
-             <option value="spicy">Spicy</option>
-             <option value="vegan">Vegan</option>
-             <option value="vegetarian">Vegetarian</option>
-             <option value="wheelchair">Wheelchair Accessible</option>
-             <option value="outdoor">Outdoor Dining</option>
-             <option value="femaleOwned">Female Owned</option>
-            </Field> */}
+             <Field className="options" type="checkbox" name="spicy" checked={values.foodPref}/>
+             
+             <Field className="options" type="checkbox" name="vegan" checked={values.foodPref}/>
+             <Field className="options" type="checkbox" name="vegetarian" checked={values.foodPref}/>
+             <Field className="options" type="checkbox" name="wheelchair" checked={values.foodPref}/>
+             <Field className="options" type="checkbox" name="outdoor" checked={values.foodPref}/>
+             <Field className="options" type="checkbox" name="woman" checked={values.foodPref}/>
+            
 {/* 
             <Field className="option" name="platformPref" as="select">
              <option value="doorDash">Door Dash</option>
@@ -48,41 +48,60 @@ const OnboardingForm = ({ values, errors, touched, status, setFieldValue }) => {
        </div>
     );
  };
- 
+ function ID(props) {
+    let [id, setId] = useState('')
+     id = (!!props.user || setId(5))
+ }
+
  const FormikOnboardingForm = withFormik({
-    mapPropsToValues({ username,  password, email, streetAddress, city, state, zipcode }) {
+     
+    mapPropsToValues({ username,  password, email, streetAddress, city, state, zipcode,foodPref }) {
        return {
-          userName: username || "",
-          password: password || "",
-          email: email || "", 
-          streetAddress: streetAddress || "",
-          city: city || "",
-          state: state || "",
-          zipcode: zipcode || "",
+           foodPref: foodPref||0
+        //   spicy: spicy || 0,
+        //   vegan: vegan || 0,
+        //   vegetarian: vegetarian || 0, 
+        //   wheelchair: wheelchair || 0,
+        //   outdoor: outdoor || 0,
+        //   woman: woman || 0,
+        
        }
     },
  
-    validationSchema: Yup.object().shape({
-       userName: Yup.string().required("USERNAME REQUIRED!"),
-       email: Yup.string()
-          .required("EMAIL REQUIRED!"),
-       password: Yup.string().required("PASSWORD REQUIRED!"),
-      //  address: Yup.string().required("ADDRESS REQUIRED!"),
-      //  city: Yup.string().required("CITY REQUIRED!"),
-      //  state: Yup.string().required("STATE REQUIRED!"),
-       zipcode: Yup.number().required("ZIP CODE REQUIRED!")
-    }),
+    // validationSchema: Yup.object().shape({
+    //    userName: Yup.string().required("USERNAME REQUIRED!"),
+    //    email: Yup.string()
+    //       .required("EMAIL REQUIRED!"),
+    //    password: Yup.string().required("PASSWORD REQUIRED!"),
+    //   //  address: Yup.string().required("ADDRESS REQUIRED!"),
+    //   //  city: Yup.string().required("CITY REQUIRED!"),
+    //   //  state: Yup.string().required("STATE REQUIRED!"),
+    //    zipcode: Yup.number().required("ZIP CODE REQUIRED!")
+    // }),
  
     handleSubmit(values, { setStatus, resetForm }) {
-       AxiosWithAuth()
-         .post('api/diner', values)
-         .then(res => {
-            console.log(res)
-            localStorage.setItem('token', res.data.token);
-          })
-          .catch(error => {
-             console.log(error);
-          })
+        
+      
+            AxiosWithAuth()
+              .post(`foodPref/${ID()},values`)
+              .then(response => {
+                console.log(response);
+              })
+              .catch(error => console.error("FoodPrefForm:",error));
+           
+            // useEffect(didUpdate, []);
+           
+     
+        
+    //    AxiosWithAuth()
+    //      .post('api/diner', values)
+    //      .then(res => {
+    //         console.log(res)
+    //         localStorage.setItem('token', res.data.token);
+    //       })
+    //       .catch(error => {
+    //          console.log(error);
+    //       })
     }
  
  })(OnboardingForm);

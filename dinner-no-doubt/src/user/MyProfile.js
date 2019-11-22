@@ -11,31 +11,31 @@ export default function MyProfile(props) {
   //Changed axios call Sladan built to AxiosWithAuth
 
   useEffect(() => {
-    console.log("Profile id:", id)
+    // console.log("Profile id:", id)
   AxiosWithAuth()
-      .get(`api/diner/${id}`)
+      .get(`api/diner/5`)
       .then(response => {
-        setProfile(response.data);
+        setProfile(response.data.data);
         console.log(response);
       })
-      .catch(error => console.log(error))
+      .catch(error => console.error("Problem with myProfile profile fetch:",error))
     },[])
-    console.log("Profile id:", id)
+    // console.log("Profile id:", id)
   
    
-  useEffect(() => { 
-  AxiosWithAuth()
-    .get(`foodPref/${id}`)
-    .then(response => {
-      setProfile(...profile,response.data);
-      console.log(response);
-    })
-    .catch(error => console.log(error));
-  },[])
-  // useEffect(didUpdate, []);
-  useEffect(() => {
-   id = (!!props.user || setId(5))
-  },[])
+  // useEffect(() => { 
+  // AxiosWithAuth()
+  //   .get(`foodPref/${id}`)
+  //   .then(response => {
+  //     setProfile(...profile,response.data);
+  //     console.log(response);
+  //   })
+  //   .catch(error => console.log(error));
+  // },[])
+  // // useEffect(didUpdate, []);
+  // useEffect(() => {
+  //  id = (!!props.user || setId(5))
+  // },[])
     // } else {
     //   setId(props.user.id);
     // }
@@ -44,11 +44,11 @@ export default function MyProfile(props) {
 
   return (
     <div className="profile">
-      {/* {profile.map(myProfile => {
+      {profile.map(myProfile => {
         return <ProfileCard profile={myProfile} />;
-      })} */}
-       <ProfileCard profile={profile}/>;
-    </div>
+      })}
+       {/* <ProfileCard profile={profile}/>;*/}
+     </div> 
   );
 
 }  
