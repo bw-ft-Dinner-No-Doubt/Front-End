@@ -1,8 +1,10 @@
 import React from 'react';
+import { Card } from 'semantic-ui-react';
 
-const MovieCard = props => {
+export default function ProfileCard (props) {
     return (
         <div className = 'profile-card'>
+            <h1>My Profile</h1>
             <h4>{props.profile.userName}</h4>
             <h4>{props.profile.email}</h4>
             <h4>{props.profile.address}</h4>
@@ -15,11 +17,3 @@ const MovieCard = props => {
         </div>
     )
 };
-
-// function User(props) {
-//     const [user, setUserProfile] = useState ({userName: '', email: '', address: '', city: '',
-//     state: '', zipcode: ''});
-//     const handleChange = e => {
-//         setUserProfile ({[e.target.name]: e.target.value});
-
-export default MovieCard;

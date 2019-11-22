@@ -34,11 +34,15 @@
     
   }
   .profile-card {
-    background: grey;
-    height: auto;
-    border-radius: 3px;
-    box-shadow: 0 20px 30px;
+    border: 1px solid red;
+    min-height: 60vh;
+    width: 100%;
+    background-color: #dddddd;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-start;
   }
+
   h4 {
     margin: 2% 0;
   }

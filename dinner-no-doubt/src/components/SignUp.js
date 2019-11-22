@@ -3,22 +3,21 @@ import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 
-const OnboardingForm = ({ values, errors, touched, status, setFieldValue }) => {
-    const [user, setUser] = useState([]);
- 
+const SignUp = ({ values, errors, touched }) => { 
   
  
     return (
        <div className="form-container">
           <Form className="form">
-             {touched.userName && errors.userName && <p className="error">{errors.userName}</p>}
-             <Field type="text" name="userName" placeholder="User Name" />
-             {touched.email && errors.email && <p className="error">{errors.email}</p>}
-             <Field type="email" name="email" placeholder="Email" />
+             {touched.username && errors.username && <p className="error">{errors.username}</p>}
+             <Field type="text" name="username" placeholder="username" />
              {touched.password && errors.password && <p className="error">{errors.password}</p>}
              <Field type="password" name="password" placeholder="Password" className="form-control rounded-0"/>
-             {touched.address && errors.address && <p className="error">{errors.address}</p>}
-             <Field type="text" name="address" placeholder="Address" />
+             {touched.email && errors.email && <p className="error">{errors.email}</p>}
+             <Field type="email" name="email" placeholder="Email" />
+             
+             {touched.streetAddress && errors.streetAddress && <p className="error">{errors.streetAddress}</p>}
+             <Field type="text" name="streetAddress" placeholder="Street Address" />
              {touched.city && errors.city && <p className="error">{errors.city}</p>}
              <Field type="text" name="city" placeholder="City" />
              {touched.state && errors.state && <p className="error">{errors.state}</p>}
@@ -33,7 +32,7 @@ const OnboardingForm = ({ values, errors, touched, status, setFieldValue }) => {
              <option value="wheelchair">Wheelchair Accessible</option>
              <option value="outdoor">Outdoor Dining</option>
              <option value="femaleOwned">Female Owned</option>
-            </Field>
+            </Field> 
 
             <Field className="option" name="platformPref" as="select">
              <option value="doorDash">Door Dash</option>
@@ -48,13 +47,15 @@ const OnboardingForm = ({ values, errors, touched, status, setFieldValue }) => {
     );
  };
  
- const FormikOnboardingForm = withFormik({
-    mapPropsToValues({ userName, email, password, address, city, state, zipcode }) {
+ const FormikSignUp = withFormik({
+    mapPropsToValues({ username, password, email, streetAddress, city, state, zipcode, foodPref, platformPref }) {
        return {
-          userName: userName || "",
-          email: email || "", 
+          foodPref: foodPref,
+          platformPref: platformPref,
+          username: username || "", 
           password: password || "",
-          address: address || "",
+          email: email || "",
+          streetAddress: streetAddress || "",
           city: city || "",
           state: state || "",
           zipcode: zipcode || "",
@@ -62,28 +63,26 @@ const OnboardingForm = ({ values, errors, touched, status, setFieldValue }) => {
     },
  
     validationSchema: Yup.object().shape({
-       userName: Yup.string().required("USERNAME REQUIRED!"),
-       email: Yup.string()
-          .required("EMAIL REQUIRED!"),
+       username: Yup.string().required("USERNAME REQUIRED!"),
        password: Yup.string().required("PASSWORD REQUIRED!"),
-       address: Yup.string().required("ADDRESS REQUIRED!"),
+       email: Yup.string().required("EMAIL REQUIRED!"),
+       streetAddress: Yup.string().required("ADDRESS REQUIRED!"),
        city: Yup.string().required("CITY REQUIRED!"),
        state: Yup.string().required("STATE REQUIRED!"),
        zipcode: Yup.number().required("ZIP CODE REQUIRED!")
     }),
  
-    handleSubmit(values, { setStatus, resetForm }) {
-       axios.post('https://reqres.in/api/users', values)
+    handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
+       axios.post('https://dinner-no-doubt.herokuapp.com/api/auth/register', values)
           .then(response => {
              console.log(response);
-             setStatus(response.data);
              resetForm();
           })
           .catch(error => {
-             console.log(error);
+             console.log(error.response);
           })
     }
  
- })(OnboardingForm);
+ })(SignUp);
  
- export default FormikOnboardingForm;
+ export default FormikSignUp;
