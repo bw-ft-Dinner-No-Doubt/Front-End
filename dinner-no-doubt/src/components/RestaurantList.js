@@ -58,9 +58,7 @@ const RestaurantList = props => {
           // duration={wheelData.duration}
         >
           {props.restaurantList.map((restaurant, id) => (
-              <div style = {divStyle}>{restaurant}
-              <MealWheel restaurant={restaurant}/>
-              </div>
+              <div style = {divStyle}><MealWheel {...restaurant}></MealWheel></div>
             )
             // Children of `Slot` be sure to be `width` and `height` are 100%.
           )}
