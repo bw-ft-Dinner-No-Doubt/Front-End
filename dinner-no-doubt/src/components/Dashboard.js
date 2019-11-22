@@ -12,6 +12,7 @@ export default function Dashboard() {
 
    return (
       <>
+      <h1>Testing!</h1>
          <Menu tabular>
             <Menu.Item
                name='RecentHistory'
@@ -29,7 +30,7 @@ export default function Dashboard() {
         </Menu.Item>
             </Menu>
             <Route path="/RecentHistory" component={RecentHistory} />
-            <Route path="/MyProfile" component={MyProfile} />
+            {/* <Route path="/MyProfile" component={MyProfile} /> */}
         </>
    )
 };

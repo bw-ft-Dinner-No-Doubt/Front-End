@@ -17,6 +17,8 @@ const LogIn = ({ values, errors, touched }) => {
              {touched.password && errors.password && <p className="error">{errors.password}</p>}
              <Field type="password" name="password" placeholder="password" />
              <button type="submit">SUBMIT</button>
+
+             
            
            
 
