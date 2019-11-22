@@ -1,29 +1,30 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect} from "react";
 import { AxiosWithAuth } from "../components/utilities/AxiosWithAuth";
-import ProfileCard from "./ProfileCard"
+import ProfileCard from "./ProfileCard";
 
 export default function MyProfile(props) {
-// console.log('MyProfile.js -> %cprops:', 'color: brown', props)
+  // console.log('MyProfile.js -> %cprops:', 'color: brown', props)
   const [profile, setProfile] = useState([]);
- let [id, setId] = useState();
+  // let [id, setId] = useState();
 
   // const didUpdate = () => {
   //Changed axios call Sladan built to AxiosWithAuth
 
   useEffect(() => {
     // console.log("Profile id:", id)
-  AxiosWithAuth()
+    AxiosWithAuth()
       .get(`api/diner/5`)
       .then(response => {
-        setProfile(response.data.data);
+        setProfile(response.data);
         console.log(response);
       })
-      .catch(error => console.error("Problem with myProfile profile fetch:",error))
-    },[])
-    // console.log("Profile id:", id)
-  
-   
-  // useEffect(() => { 
+      .catch(error =>
+        console.error("Problem with myProfile profile fetch:", error)
+      );
+  }, []);
+  console.log("Profile :", profile);
+
+  // useEffect(() => {
   // AxiosWithAuth()
   //   .get(`foodPref/${id}`)
   //   .then(response => {
@@ -36,19 +37,14 @@ export default function MyProfile(props) {
   // useEffect(() => {
   //  id = (!!props.user || setId(5))
   // },[])
-    // } else {
-    //   setId(props.user.id);
-    // }
-  
- 
+  // } else {
+  //   setId(props.user.id);
+  // }
 
   return (
     <div className="profile">
-      {profile.map(myProfile => {
-        return <ProfileCard profile={myProfile} />;
-      })}
-       {/* <ProfileCard profile={profile}/>;*/}
-     </div> 
+      <ProfileCard profile={profile} />
+      {/* <ProfileCard profile={profile}/>;*/}
+    </div>
   );
-
-}  
+}

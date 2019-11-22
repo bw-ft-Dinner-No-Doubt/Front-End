@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React from "react";
 import {AxiosWithAuth} from './utilities/AxiosWithAuth';
-import RestaurantList from './RestaurantList';
+// import RestaurantList from './RestaurantList';
 
 
 
