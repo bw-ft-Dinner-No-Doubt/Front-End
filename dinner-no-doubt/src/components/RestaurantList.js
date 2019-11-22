@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 // import RestaurantChoice from "./RestaurantChoice";
 import {fetchRestaurants } from "./actions/";
 import Slot from "react-slot-machine";
+import MealWheel from './MealWheel'
 
 const RestaurantList = props => {
   // console.log("RestaurantList.js -> %cprops:", "color: cyan", props);
@@ -52,19 +53,21 @@ const RestaurantList = props => {
 
       <div>
         <Slot
-          target={wheelData.target}
-          times={wheelData.times}
-          duration={wheelData.duration}
+          // target={wheelData.target}
+          // times={wheelData.times}
+          // duration={wheelData.duration}
         >
           {props.restaurantList.map((restaurant, id) => (
-              <div style = {divStyle}>{restaurant.name}</div>
+              <div style = {divStyle}><MealWheel {...restaurant}></MealWheel></div>
             )
             // Children of `Slot` be sure to be `width` and `height` are 100%.
           )}
+            
         </Slot>
-        {/* <RestaurantChoice {...props}/> */}
-        {/* {console.log('RestaurantList.js -> %cprops:', 'color: green', props)} */}
+      
+  
       </div>
+    
     </section>
   );
 };
