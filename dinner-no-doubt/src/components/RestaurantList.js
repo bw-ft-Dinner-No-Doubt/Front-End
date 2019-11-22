@@ -5,7 +5,7 @@ import {fetchRestaurants } from "./actions/";
 import Slot from "react-slot-machine";
 
 const RestaurantList = props => {
-  console.log("RestaurantList.js -> %cprops:", "color: cyan", props);
+  // console.log("RestaurantList.js -> %cprops:", "color: cyan", props);
 
   const divStyle={width: '100%', height: '100%'}
   const foodPrefs = {
@@ -27,17 +27,17 @@ const RestaurantList = props => {
 
   // console.log('RestaurantList.js -> %ctarget:', 'color: teal', target)
 
-  console.log("FoodPrefs:", foodPrefs);
+  // console.log("FoodPrefs:", foodPrefs);
 
   let terms = Object.entries(foodPrefs).forEach(pref => {
     if (pref[1] !== 0) {
       return pref[0];
     }
   });
-  console.log("Terms:", terms);
+  // console.log("Terms:", terms);
   // console.log('RestaurantList.js -> %csearchTerms:', 'color: red', searchTerms)
 
-  console.log("RestaurantList.js -> %cterms:", "color: brown", terms);
+  // console.log("RestaurantList.js -> %cterms:", "color: brown", terms);
 
   useEffect(() => {
     props.fetchRestaurants();
@@ -63,7 +63,7 @@ const RestaurantList = props => {
           )}
         </Slot>
         {/* <RestaurantChoice {...props}/> */}
-        {console.log('RestaurantList.js -> %cprops:', 'color: green', props)}
+        {/* {console.log('RestaurantList.js -> %cprops:', 'color: green', props)} */}
       </div>
     </section>
   );

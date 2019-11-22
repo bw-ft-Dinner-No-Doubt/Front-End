@@ -82,6 +82,13 @@
     font-size: 1.1rem;
     margin-bottom: 4px;
   }
+  .logOut {
+    width: 10%;
+    height: 5%;
+    color:white;
+    background:teal;
+    font-size: small;
+  }
   
   /* .user-container {
     border: 1px solid red;
