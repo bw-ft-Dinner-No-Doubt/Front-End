@@ -5,7 +5,7 @@ import RestaurantList from './RestaurantList';
 
 
 const RestaurantChoice = (props) => {
-console.log('RestaurantChoice.js -> %cprops:', 'color: darkorange', props)
+// console.log('RestaurantChoice.js -> %cprops:', 'color: darkorange', props)
   
 
 

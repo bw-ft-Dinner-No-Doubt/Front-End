@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import {AxiosWithAuth} from "./utilities/AxiosWithAuth";
+import {Link, Redirect} from 'react-router-dom';
 import Dashboard from '../user/Dashboard';
 
 const OnboardingForm = ({ values, errors, touched, status, setFieldValue }) => {
   const [users, setUsers] = useState([]);
+ 
+ 
 
   useEffect(() => {
     if (status) setUsers([...users, status]);
-  }, [status]);
+  }, [users,status]);
 
   console.log(values);
 
@@ -31,13 +34,21 @@ const OnboardingForm = ({ values, errors, touched, status, setFieldValue }) => {
         )}
         <Field type="text" name="email" placeholder="email" />
 
-        <button type="submit">submit</button>
+        {/* <Link to="/protected"> */}
+        <button type="submit">Submit</button>
+        {/* </Link> */}
+        <br/>
+        <Link to="/register">
+        <button>Sign Up</button>
+        </Link>
       </Form>
     </div>
   );
 };
+// const [toDashboard, setToDashboard] = useState(false);
 
 const FormikOnboardingForm = withFormik({
+  
   mapPropsToValues({ username, email, password }) {
     return {
       username: username || "",
@@ -46,27 +57,32 @@ const FormikOnboardingForm = withFormik({
     };
   },
 
-  validationSchema: Yup.object().shape({
+    validationSchema: Yup.object().shape({
     username: Yup.string().required("USERNAME REQUIRED!"),
     email: Yup.string().required("EMAIL REQUIRED!"),
     password: Yup.string().required("PASSWORD REQUIRED!")
   }),
-
+ 
   handleSubmit(values, { setStatus, resetForm }) {
+  console.log('SignIn.js -> %cvalues:', 'color: indigo', values)
    AxiosWithAuth()
       .post("api/auth/login", values)
       .then(res => {
          console.log(res)
          localStorage.setItem('token', res.data.token);
-         // values.history.push('/protected');
-        
- 
-      })
+        // {'token' ? <Redirect to="/protected" /> : null}
+         setTimeout(() => <Redirect to="/protected" />, 1000)
+         ///values.history.push('/protected');
+         
+        })
       .catch(error => {
         console.log(error);
+        
       });
       
+      
   }
+  
 })(OnboardingForm);
 
 export default FormikOnboardingForm;
