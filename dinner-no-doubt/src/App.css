@@ -34,6 +34,8 @@
     
   }
   .profile-card {
+    font-size: large;
+    color: white;
     background: grey;
     height: auto;
     border-radius: 3px;
@@ -44,6 +46,8 @@
   }
   
   .form {
+    width: 100%;
+    background:grey;
     padding: 20px;
     display: flex;
     flex-direction: column;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Menu } from "semantic-ui-react";
-import { NavLink, Link, Route } from "react-router-dom";
+import {Link} from "react-router-dom";
 import {AxiosWithAuth} from '../components/utilities/AxiosWithAuth';
 // import MyHistory from "./MyHistory";
 // import MyProfile from "./MyProfile";
@@ -31,19 +31,19 @@ export default function Dashboard(props) {
   return (
     <div>
       <RestaurantList />
-      {/* <Menu tabular>
+      <Menu tabular>
        
           <Menu.Item
             name="RecentHistory"
             active={activeItem === "RecentHistory"}
             onClick={handleItemClick}
-          ></Menu.Item> */}
+          ></Menu.Item>
            {/* <NavLink to="/protected/history">Restaurant History</NavLink> */}
 {/*        
         <br /> */}
 
         
-          {/* <Menu.Item
+          <Menu.Item
             name="MyProfile"
             active={activeItem === "MyProfile"}
             onClick={handleItemClick}
@@ -52,7 +52,7 @@ export default function Dashboard(props) {
           </Menu.Item> */}
           {/* <NavLink to="/protected/profile">My Profile</NavLink> */}
   
-      {/* </Menu> */}
+      </Menu>
       <Link to ="/login">
       <button className="logOut" onClick={logOut}>Log Out</button>
       </Link>

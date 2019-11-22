@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import RestaurantChoice from "./RestaurantChoice";
+// import RestaurantChoice from "./RestaurantChoice";
 import {fetchRestaurants } from "./actions/";
 import Slot from "react-slot-machine";
 
@@ -8,13 +8,13 @@ const RestaurantList = props => {
   // console.log("RestaurantList.js -> %cprops:", "color: cyan", props);
 
   const divStyle={width: '100%', height: '100%'}
-  const foodPrefs = {
-    spicy: 1,
-    vegetarian: 0,
-    vegan: 0,
-    femaleOwned: 0,
-    outdoor_dining: 1
-  };
+  // const foodPrefs = {
+  //   spicy: 1,
+  //   vegetarian: 0,
+  //   vegan: 0,
+  //   femaleOwned: 0,
+  //   outdoor_dining: 1
+  // };
 
   const wheelData = {
     target: Math.round(Math.random() * 10),
@@ -29,11 +29,11 @@ const RestaurantList = props => {
 
   // console.log("FoodPrefs:", foodPrefs);
 
-  let terms = Object.entries(foodPrefs).forEach(pref => {
-    if (pref[1] !== 0) {
-      return pref[0];
-    }
-  });
+  // let terms = Object.entries(foodPrefs).forEach(pref => {
+  //   if (pref[1] !== 0) {
+  //     return pref[0];
+  //   }
+  // });
   // console.log("Terms:", terms);
   // console.log('RestaurantList.js -> %csearchTerms:', 'color: red', searchTerms)
 

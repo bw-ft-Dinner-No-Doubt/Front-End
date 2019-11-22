@@ -1,7 +1,7 @@
 import React from "react";
 import { AxiosWithAuthYelp } from "../utilities/AxiosWithAuthYelp";
 import { AxiosWithAuth } from "../utilities/AxiosWithAuth";
-import RestaurantChoice from "../RestaurantChoice";
+// import RestaurantChoice from "../RestaurantChoice";
 
 export const START_FETCHING_YELP = "START_FETCHING_YELP";
 export const FETCH_SUCCESS_YELP = "FETCH_SUCCESS_YELP";
@@ -40,9 +40,9 @@ export const fetchRestaurants = () => dispatch => {
 
 export const fetchHistory = () => dispatch => {
   dispatch({ type: START_FETCHING_HISTORY });
-  const user = {
-    zip: 73099
-  };
+  // const user = {
+  //   zip: 73099
+  // };
   AxiosWithAuth()
     .get(`/api/restaurant`)
     .then(res => dispatch({ type: FETCH_SUCCESS_HISTORY, payload: res.data }))

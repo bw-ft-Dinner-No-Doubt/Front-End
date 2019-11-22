@@ -1,69 +1,80 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Form, Field, withFormik } from 'formik';
-import * as Yup from 'yup';
+// import * as Yup from 'yup';
 import {AxiosWithAuth} from '../components/utilities/AxiosWithAuth';
 
 const OnboardingForm = ({ values, errors, touched, status, setFieldValue }) => {
-    const [user, setUser] = useState([]);
+    // const [user, setUser] = useState([]);
  
   
  
     return (
        <div className="form-container">
           <Form className="form">
-             {/* {touched.userName && errors.username && <p className="error">{errors.username}</p>}
-             <Field type="text" name="userName" placeholder="User Name" />
-             {touched.password && errors.password && <p className="error">{errors.password}</p>}
-             <Field type="password" name="password" placeholder="Password" className="form-control rounded-0"/>
-             {touched.email && errors.email && <p className="error">{errors.email}</p>}
-             <Field type="email" name="email" placeholder="Email" />
-             
-             {touched.streetAddress && errors.streetAddress && <p className="error">{errors.streetAddress}</p>}
-             <Field type="text" name="streetAddress" placeholder="Address" />
-             {touched.city && errors.city && <p className="error">{errors.city}</p>}
-             <Field type="text" name="city" placeholder="City" />
-             {touched.state && errors.state && <p className="error">{errors.state}</p>}
-             <Field type="text" name="state" placeholder="State" />
-             {touched.zipcode && errors.zipcode && <p className="error">{errors.zipcode}</p>}
-             <Field type="integer" name="zipcode" placeholder="Zip Code" /> */}
 
+            <label className="foodPrefTitle">
+            <label>
+                Restaurant Preferences
              <Field className="options" type="checkbox" name="spicy" checked={values.foodPref}/>
-             
+             Spicy Foods
+             </label>
+
+             <label>
              <Field className="options" type="checkbox" name="vegan" checked={values.foodPref}/>
+             Vegan
+             </label>
+
+             <label>
              <Field className="options" type="checkbox" name="vegetarian" checked={values.foodPref}/>
+            Vegetarian
+             </label>
+             
+             <label>
              <Field className="options" type="checkbox" name="wheelchair" checked={values.foodPref}/>
+             Wheelchair Accessible
+             </label>
+             
+             <label>
              <Field className="options" type="checkbox" name="outdoor" checked={values.foodPref}/>
+             Outdoor Dining
+             </label>
+             
+             <label>
              <Field className="options" type="checkbox" name="woman" checked={values.foodPref}/>
-            
-{/* 
-            <Field className="option" name="platformPref" as="select">
+             Woman Owned
+             </label>
+             </label>
+
+            {/* <Field className="option" name="platformPref" as="select">
              <option value="doorDash">Door Dash</option>
              <option value="uberEats">Uber Eats</option>
              <option value="grubHub">Grub Hub</option>
-            </Field>
-            <button type="submit">SUBMIT</button> */}
+            </Field> */}
+            
+          { console.log(values)}
+          
+          <button type="submit">Submit Food Preferences</button>
           </Form>
 
+        
           
        </div>
     );
  };
- function ID(props) {
-    let [id, setId] = useState('')
-     id = (!!props.user || setId(5))
- }
+
 
  const FormikOnboardingForm = withFormik({
      
-    mapPropsToValues({ username,  password, email, streetAddress, city, state, zipcode,foodPref }) {
+    mapPropsToValues({ username,  password, email, streetAddress, city, state, zipcode,
+        foodPref,spicy,vegan,vegetarian, wheelchair, outdoor, woman}) {
        return {
-           foodPref: foodPref||0
-        //   spicy: spicy || 0,
-        //   vegan: vegan || 0,
-        //   vegetarian: vegetarian || 0, 
-        //   wheelchair: wheelchair || 0,
-        //   outdoor: outdoor || 0,
-        //   woman: woman || 0,
+        //    foodPref: foodPref||0
+          spicy: spicy || 0,
+          vegan: vegan || 0,
+          vegetarian: vegetarian || 0, 
+          wheelchair: wheelchair || 0,
+          outdoor: outdoor || 0,
+          woman: woman || 0,
         
        }
     },
@@ -83,7 +94,7 @@ const OnboardingForm = ({ values, errors, touched, status, setFieldValue }) => {
         
       
             AxiosWithAuth()
-              .post(`foodPref/${ID()},values`)
+              .post(`foodPref/5,values`)
               .then(response => {
                 console.log(response);
               })
@@ -103,6 +114,7 @@ const OnboardingForm = ({ values, errors, touched, status, setFieldValue }) => {
     //          console.log(error);
     //       })
     }
+   
  
  })(OnboardingForm);
  
