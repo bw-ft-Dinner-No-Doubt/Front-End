@@ -1,7 +1,7 @@
 import React from "react";
 import { AxiosWithAuthYelp } from "../utilities/AxiosWithAuthYelp";
 import { AxiosWithAuth } from "../utilities/AxiosWithAuth";
-// import RestaurantChoice from "../RestaurantChoice";
+import RestaurantChoice from "../RestaurantChoice";
 
 export const START_FETCHING_YELP = "START_FETCHING_YELP";
 export const FETCH_SUCCESS_YELP = "FETCH_SUCCESS_YELP";
@@ -25,13 +25,16 @@ export const DELETE_FAILURE = "DELETE_FAILURE";
 
 export const fetchRestaurants = () => dispatch => {
   dispatch({ type: START_FETCHING_YELP });
-  const user = {
-    zip: 73099
-  };
+  // const user = {
+  //   zip: 73099
+  // };
   AxiosWithAuthYelp()
-    .get(`/search?term="restaurant"&location=${user.zip}&limit=10`)
-    .then(res =>
-      dispatch({ type: FETCH_SUCCESS_YELP, payload: res.data.businesses })
+    .get(`/search?term="restaurant"&location=73099&limit=10`)
+    .then(response =>
+    
+      dispatch({ type: FETCH_SUCCESS_YELP, payload: response.data.businesses })
+     .then(console.log("Action fetch:", response),) 
+      
     )
     .catch(err =>
       dispatch({ type: FETCH_FAILURE_YELP, payload: err.response })
@@ -45,7 +48,7 @@ export const fetchHistory = () => dispatch => {
   // };
   AxiosWithAuth()
     .get(`/api/restaurant`)
-    .then(res => dispatch({ type: FETCH_SUCCESS_HISTORY, payload: res.data }))
+    .then(res => dispatch({ type: FETCH_SUCCESS_HISTORY, payload: res.data.businesses }))
     .catch(err =>
       dispatch({ type: FETCH_FAILURE_HISTORY, payload: err.response })
     );

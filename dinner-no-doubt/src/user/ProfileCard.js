@@ -18,7 +18,7 @@ console.log('ProfileCard.js -> %cprops:', 'color: deeppink', props)
             {/* <h4>{props.profile.foodPref}</h4> */}
             {/* <h4>{props.profile.platformPref}</h4> */}
             {/* <button className='edit-btn' onClick={() => props.setUserProfile()}>Edit</button> */}
-          <Link to="/protected/profile">  
+          <Link to="/protected/editProfile">  
           <button className='edit-btn'>Edit Profile</button>
           </Link>
         <FoodPrefForm/>
