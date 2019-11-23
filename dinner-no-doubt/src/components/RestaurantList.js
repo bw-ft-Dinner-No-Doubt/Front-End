@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 // import RestaurantChoice from "./RestaurantChoice";
 import {fetchRestaurants } from "./actions/";
-import Slot from "react-slot-machine";
-import MealWheel from './MealWheel'
+import Slot from "./MealWheel";
+
 
 const RestaurantList = props => {
   // console.log("RestaurantList.js -> %cprops:", "color: cyan", props);
@@ -46,31 +46,34 @@ const RestaurantList = props => {
   if (props.isFetching) {
     return <h2>Loading Restaurants...</h2>;
   }
-
+  // let restaurants = props.restaurantList.data
+ console.log("Restaurant List fetch:",props)
   return (
     <section>
       {props.error && <p>{props.error}</p>}
 
       <div>
-        <Slot
-          // target={wheelData.target}
-          // times={wheelData.times}
-          // duration={wheelData.duration}
-        >
-          {props.restaurantList.map((restaurant, id) => (
-              <div style = {divStyle}><MealWheel {...restaurant}></MealWheel></div>
-            )
-            // Children of `Slot` be sure to be `width` and `height` are 100%.
-          )}
+        <div>
+       
+
+       
+          {props.restaurantList.map(restaurant => {
+             
+            return <div style = {divStyle}><Slot {...restaurant}/></div>
             
-        </Slot>
-      
+             
+            // Children of `Slot` be sure to be `width` and `height` are 100%.
+           
+      })}
+          
+        </div>
+     
   
       </div>
     
     </section>
-  );
-};
+  
+  )};
 const mapStatetoProps = state => {
   return {
     restaurantList: state.restaurantList,

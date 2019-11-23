@@ -8,6 +8,7 @@ import MyHistory from './user/MyHistory';
 import './App.css';
 import Dashboard from './user/Dashboard';
 import MyProfile from './user/MyProfile';
+import EditProfile from './user/EditProfile';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <PrivateRoute exact path="/protected" component={Dashboard} />
         <PrivateRoute path="/protected/history" component={MyHistory} />
         <PrivateRoute path="/protected/profile" component={MyProfile} />
+        <PrivateRoute path="/protected/editProfile" component={EditProfile} />
         <Route path="/login" component={SignIn} />
         <Route path="/register" component={SignUp} />
         <Route component={SignIn} />

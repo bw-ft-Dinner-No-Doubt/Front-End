@@ -1,16 +1,16 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { findDOMNode } from 'react-dom';
 
 class Slot extends React.Component {
   constructor(props) {
     super(props);
-    console.log('MealWheel.js -> %cprops:', 'color: lime', props)
     this.targetRefs = [];
   }
 
   componentDidUpdate(prevProps) {
+    //{console.log("Props:", props)}
     if (this.props.target === prevProps.target) return;
 
     const $frame = this.FrameRef;
@@ -56,8 +56,8 @@ class Slot extends React.Component {
         style={{ overflow: 'hidden', position: 'relative' }}
         ref={FrameRef => (this.FrameRef = FrameRef)}
       >
-        {this.props.children.map((child, index) =>
-          React.cloneElement(child, { ref: ref => (this.targetRefs[index] = ref) }))}
+        {Array.from(this.props).map((restaurant, index) =>
+          React.cloneElement(restaurant, { ref: ref => (this.targetRefs[index] = ref) }))}
       </div>
     );
   }
@@ -68,17 +68,18 @@ Slot.defaultProps = {
   easing: function easeOutQuad(elapsed, initialValue, amountOfChange, duration) {
     return -amountOfChange * (elapsed /= duration) * (elapsed - 2) + initialValue;
   },
-  times: 1,
   target: Math.round(Math.random() * 10),
+  times: 2,
+  
   onEnd: () => {},
 };
 
 Slot.propTypes = {
-    duration: 3000,
-    target: Math.round(Math.random() * 10),
-//   easing: PropTypes.func,
-  times: 2,
-//   onEnd: PropTypes.func,
+  duration: PropTypes.number,
+  target: PropTypes.number.isRequired,
+  easing: PropTypes.func,
+  times: PropTypes.number,
+  onEnd: PropTypes.func,
 };
 
 export default Slot;

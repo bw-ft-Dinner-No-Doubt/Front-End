@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import {AxiosWithAuth} from '../components/utilities/AxiosWithAuth';
 // import MyHistory from "./MyHistory";
 // import MyProfile from "./MyProfile";
+import MealWheel from "../components/MealWheel";
 import RestaurantList from "../components/RestaurantList";
 
 export default function Dashboard(props) {
@@ -30,7 +31,8 @@ export default function Dashboard(props) {
 
   return (
     <div>
-      <RestaurantList />
+      <MealWheel/>
+      <RestaurantList/>
       <Menu tabular>
        
           <Menu.Item
@@ -38,9 +40,7 @@ export default function Dashboard(props) {
             active={activeItem === "RecentHistory"}
             onClick={handleItemClick}
           ></Menu.Item>
-           {/* <NavLink to="/protected/history">Restaurant History</NavLink> */}
-{/*        
-        <br /> */}
+
 
         
           <Menu.Item

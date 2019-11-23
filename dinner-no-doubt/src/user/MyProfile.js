@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from "react";
 import { AxiosWithAuth } from "../components/utilities/AxiosWithAuth";
 import ProfileCard from "./ProfileCard";
+import EditProfile from './EditProfile';
 
 export default function MyProfile(props) {
   // console.log('MyProfile.js -> %cprops:', 'color: brown', props)
@@ -44,6 +45,7 @@ export default function MyProfile(props) {
   return (
     <div className="profile">
       <ProfileCard profile={profile} />
+     
       {/* <ProfileCard profile={profile}/>;*/}
     </div>
   );
